@@ -1,0 +1,29 @@
+cpu=$(nproc)
+echo "no of cpu="$cpu 
+echo -e "\n"
+TOTAL_RAM=`free -m | awk '{print $2}'| head -2 | tail -1`
+echo "total memory="$TOTAL_RAM
+echo -e "\n"
+FREE_RAM=`free -m | awk '{print $4}'| head -3| tail -1`
+echo "Tatal available memory="$FREE_RAM
+echo -e "\n"
+echo "OS Name and its versin"
+cat /etc/os-release
+echo -e "\n"
+echo "Disk information"
+df -h
+echo -e "\n"
+echo "Partition wise free space available"
+df -alhk | sort -hk2 
+echo -e "\n"
+echo "IP Address Information"
+ip addr show
+echo -e "\n"
+echo "Total number of packages installed"
+dpkg -l | grep -c '^ii'
+echo -e "\n"
+echo "List Installed package name and its version"
+rpm -qa 
+echo -e "\n"
+echo" List the ongoing process on the machine" 
+ps -A
